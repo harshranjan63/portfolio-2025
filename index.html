@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harsh Ranjan | Cloud Security & DevOps</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.5s, color 0.5s;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    :root {
+            --bg-color: #f8fafc;
+      --text-color: #1e293b;
+      --card-bg: #ffffff;
+      --highlight: #0ea5e9;
+      --header-bg: radial-gradient(circle at top, #e2e8f0, #f8fafc);
+      --border-color: #cbd5e1;
+      --link-color: #0ea5e9;
+    }
+
+    .light-theme {
+      --bg-color: #0f1117;
+      --text-color: #e2e8f0;
+      --card-bg: #1e293b;
+      --highlight: #38bdf8;
+      --header-bg: radial-gradient(circle at top, #1a202c, #0f1117);
+      --border-color: #334155;
+      --link-color: #facc15;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1%, transparent 1%), radial-gradient(circle, rgba(255, 255, 255, 0.1) 1%, transparent 1%);
+      background-position: 0 0, 50px 50px;
+      background-size: 100px 100px;
+      z-index: -1;
+      animation: moveBackground 10s linear infinite;
+    }
+
+    @keyframes moveBackground {
+      from {
+        background-position: 0 0, 50px 50px;
+      }
+      to {
+        background-position: 100px 100px, 150px 150px;
+      }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 1rem 3rem;
+      background: var(--header-bg);
+    }
+
+    header h1 {
+      font-size: 4rem;
+      color: var(--text-color);
+    }
+
+    header h2 {
+      font-size: 2rem;
+      color: #fb7185;
+      margin-top: 1rem;
+    }
+
+    header p {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: var(--text-color);
+    }
+
+    .grid,
+    .top-grid,
+    .middle-grid,
+    .bottom-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .top-grid {
+      grid-template-columns: 1fr 1fr;
+      margin-top: 2rem;
+    }
+
+    .middle-grid,
+    .bottom-grid {
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 2.5rem;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+      transition: transform 0.3s ease, box-shadow 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.15), transparent 70%);
+      transform: scale(0);
+      transition: transform 0.5s ease;
+      z-index: 0;
+    }
+
+    .card:hover::before {
+      transform: scale(1);
+    }
+
+    .card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
+    }
+
+    .card h3 {
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+      color: var(--highlight);
+    }
+
+    .card p,
+    .card li {
+      font-size: 1.1rem;
+    }
+
+    .skills-icons {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .skills-icons img {
+      /* width: 85px; */
+      height: 85px;
+      margin: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .skills-icons img:hover {
+      transform: scale(1.2);
+    }
+
+    .large-card {
+      grid-column: span 2;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 1rem;
+      color: var(--text-color);
+    }
+  </style>
+</head>
+
+<body>
+  <button class="theme-toggle" onclick="document.body.classList.toggle('light-theme')">Toggle Theme</button>
+  <header>
+    <h1>Harsh Ranjan</h1>
+    <h2>Cloud Security & DevOps Engineer</h2>
+    <p>I simplify cloud and DevSecOps: From IAM to infrastructure automation, observability, and optimization.</p>
+  </header>
+
+  <div class="container">
+    <div class="top-grid">
+      <div class="card large-card">
+        <h3>About Me</h3>
+        <p>I'm focused on securing cloud environments and optimizing DevSecOps pipelines. Specializing in IAM, infrastructure as code, monitoring, and cost management.</p>
+      </div>
+
+      <div class="card">
+        <h3>Education</h3>
+        <p><strong>Veer Surendra Sai University of Technology, Burla</strong><br />Bachelor of Technology in Electronics and Telecommunication Engineering<br />2020 - 2024</p>
+      </div>
+
+      <div class="card">
+        <h3>Certifications</h3>
+        <p>Google Cloud Certified Associate Cloud Engineer</p>
+      </div>
+    </div>
+
+    <div class="middle-grid">
+      <div class="card large-card">
+        <h3>Experience</h3>
+        <p><strong>Software Developer Engineer</strong><br />iServeU Technologies Pvt. Ltd. | Onsite - Bhubaneswar<br />June 2024 - Present</p>
+        <ul>
+          <li>Linux & Networking: Managed and optimized Linux-based infrastructure, including networking (IP, iptables, ipsec) for secure and efficient connectivity.</li>
+          <li>Cloud Security & IAM: Oversaw IAM, PAM, and organization-wide security policies, ensuring compliance with best practices.</li>
+          <li>API Gateway Management: Administered 10,000+ endpoints across Apigee (Google) and on-premise API Gateways, implementing DNS mapping and routing with Istio/Gloo.</li>
+          <li>Infrastructure Automation & Configuration Management: Implemented automation using scripts (Bash/Python) and configuration management tools like Terraform/Ansible.</li>
+          <li>Database & Storage: Worked with MySQL, Vault, and Secret Manager for secure data handling and key management.</li>
+          <li>Monitoring & Observability: Developed 20+ monitoring dashboards with Prometheus, Grafana, Nagios, and Zabbix, improving incident detection and response.</li>
+          <li>Cost Optimization & Performance Tuning: Spearheaded cloud cost-saving initiatives, reducing monthly expenses by Rs. 10L+, while ensuring optimal resource allocation.</li>
+          <li>On-Call Support: Actively participated in on-call rotations to troubleshoot critical production incidents and maintain high availability.</li>
+        </ul>
+        <p><strong>Software Developer Engineer Intern</strong><br />iServeU Technologies Pvt. Ltd. | Onsite - Bhubaneswar<br />December 2023 - June 2024</p>
+        <ul>
+          <li>Conducted IAM audits, managed secrets and vaults, and reviewed audit logs to strengthen security compliance.</li>
+        </ul>
+        <p><strong>Software Developer Engineer Intern</strong><br />Lancyfirm | Remote<br />March 2022 - July 2022</p>
+        <ul>
+          <li>Deployed and managed AWS-based infrastructure, handling CI/CD pipelines for backend and frontend deployments.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom-grid">
+      <div class="card large-card">
+        <h3>Skills Overview</h3>
+        <p><strong>Cloud DevOps:</strong> API Gateway (Apigee), Kubernetes, IAM, PAM, Secret Manager, HashiCorp Vault, MySQL, KMS, VPCs, Firewall, Cloudflare DNS, Gloo, Istio.</p>
+        <p><strong>Linux Networking:</strong> Ubuntu, RHEL, iptables, ipsec, VPNs, load balancers, TCP/IP.</p>
+        <p><strong>Scripting Automation:</strong> Bash, Python, Golang (basic), Jenkins, Ansible, Terraform.</p>
+        <p><strong>Observability:</strong> Prometheus, Grafana, Nagios, Zabbix.</p>
+        <p><strong>Soft Skills:</strong> Problem-Solving, Incident Management, Team Collaboration, Adaptability.</p>
+      </div>
+
+      <div class="card large-card">
+        <h3>Skill Logos</h3>
+        <div class="skills-icons">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="Bash">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Zabbix_logo.svg/1280px-Zabbix_logo.svg.png" alt="Zabbix">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg" alt="Grafana">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnPyUcx9Rqcv7aKhASbNcFHRARX3wsJU0xtg&s" alt="Premethius">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" alt="Terraform">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg" alt="Ansible">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Jenkins_logo_with_title.svg" alt="Jenkins">
+          <img src="data:image/png;base64,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" alt="IAM">
+          <img src="data:image/png;base64,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" alt="Apigee">
+          <img src="https://miro.medium.com/v2/resize:fit:961/1*tQKERQdZsjUArxXjaHo9PA.png" alt="Secret Manager">
+          <img src="https://www.freelogovectors.net/wp-content/uploads/2021/02/vault-logo-freelogovectors.net_.png" alt="Vault">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQv7w4mheiaVgXAVMcNFTg7FtVO-Wv5XqZ_Q&s" alt="KMS">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU_Eo3W2j64W6Sl8dmtGk1j30UEqkmHThC5A&s" alt="VPC">
+          <img src="https://help.sumologic.com/img/integrations/google/firewall.png" alt="firewall">
+          <img src="https://download.logo.wine/logo/Cloudflare/Cloudflare-Logo.wine.png" alt="CloudFlare">
+          <img src="https://logowik.com/content/uploads/images/gloo9195.jpg" alt="Gloo">
+          <img src="https://miro.medium.com/v2/resize:fit:800/1*5ojGsucagqcYZGswDM4Vfw.png" alt="Istio">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Red_Hat_logo.svg/2560px-Red_Hat_logo.svg.png" alt="RHEL">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/UbuntuCoF.svg/2048px-UbuntuCoF.svg.png" alt="Ubuntu">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/2560px-Docker_%28container_engine%29_logo.svg.png" alt="Docker">
+          
+        </div>
+      </div>
+
+      <div class="card large-card">
+        <h3>Contact</h3>
+        <p>📧 harshranjan63@gmail.com</p>
+        <p>🔗 <a href="https://www.linkedin.com/in/harshranjan63" target="_blank" style="color: #facc15;">LinkedIn</a></p>
+        <p>📍 Bhubaneswar, Odisha, India</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Harsh Ranjan. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>
